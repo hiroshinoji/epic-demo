@@ -12,7 +12,7 @@ tmp/
 *target
 .scala_dependencies
 .*.swp
-*.jar
+
 .idea*
 .scratch/
 java.hprof.txt
