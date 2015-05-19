@@ -8,8 +8,16 @@ object RunParser {
 
     val parser = epic.models.ParserSelector.loadParser().get
 
+    val before = System.currentTimeMillis
+
     sentences foreach { sentence =>
       println(parser(sentence) render sentence)
     }
+
+    val parsingTime = System.currentTimeMillis - before
+
+    val speed = sentences.size.toDouble / (parsingTime / 1000.0)
+
+    System.err.println("parsing speed (sentence/sec): " + speed)
   }
 }
