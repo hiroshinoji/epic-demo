@@ -16,8 +16,8 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
   "org.scalanlp" %% "epic" % "0.2",
-  // "org.scalanlp" %% "epic-parser-en-span" % "2014.9.15",
-  "org.scalanlp" %% "epic-parser-en-span" % "2015.1.25",
+  "org.scalanlp" %% "epic-parser-en-span" % "2014.9.15",
+  // "org.scalanlp" %% "epic-parser-en-span" % "2015.1.25",
   "org.scalanlp" %% "epic-ner-en-conll" % "2014.10.26",
   "junit" % "junit" % "4.5" % "test"
 )
