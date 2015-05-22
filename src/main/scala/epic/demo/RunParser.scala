@@ -10,9 +10,12 @@ object RunParser {
 
     val before = System.currentTimeMillis
 
-    sentences foreach { sentence =>
-      println(parser(sentence) render sentence)
-    }
+    sentences.par.map { s => (s, parser(s)) }.seq.foreach { case (s, p) => println(p render s) }
+
+    // sentences.zipWithIndex foreach { case (sentence, i) =>
+    //   // System.err.println(i + " " + sentence.mkString(" "))
+    //   println(parser(sentence) render sentence)
+    // }
 
     val parsingTime = System.currentTimeMillis - before
 
