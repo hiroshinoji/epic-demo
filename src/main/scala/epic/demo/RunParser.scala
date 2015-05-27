@@ -1,12 +1,17 @@
 package epic.demo
 
 import jigg.util.IOUtil
+import epic.parser.Parser
+import epic.trees.AnnotatedLabel
 
 object RunParser {
   def main(args: Array[String]) = {
+
+    val model: Option[String] = if (args.isEmpty) None else Some(args(0))
+
     val sentences:IndexedSeq[IndexedSeq[String]] = IOUtil.openStandardIterator.toIndexedSeq.map(_.split("\\s+").toIndexedSeq)
 
-    val parser = epic.models.ParserSelector.loadParser().get
+    val parser = model.map(path => epic.models.deserialize[Parser[AnnotatedLabel, String]](path)).getOrElse(epic.models.ParserSelector.loadParser().get)
 
     val before = System.currentTimeMillis
 
